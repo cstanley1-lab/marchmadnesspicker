@@ -42,81 +42,82 @@ public class Bracket {
         for (TeamInfo team : teams) {
             roundOf64.add(team);
         }
+    }
 
-        // round progression
-        // 64 ==> 32
+    // round progression
+    // 64 ==> 32
 
-        public void advanceToRoundOf32(TeamInfo winner) {
-            roundOf32.add(winner);
-        }
+    public void advanceToRoundOf32(TeamInfo winner) {
+        roundOf32.add(winner);
+    }
 
-        // 32 ==> sweet 16
-        public void advanceToSweet16(TeamInfo winner) {
-            sweet16.add(winner);
-        }
+    // 32 ==> sweet 16
+    public void advanceToSweet16(TeamInfo winner) {
+        sweet16.add(winner);
+    }
 
-        // sweet 16 ==> elite 8
-        public void advanceToElite8(TeamInfo winner) {
-            elite8.add(winner);
-        }
+    // sweet 16 ==> elite 8
+    public void advanceToElite8(TeamInfo winner) {
+        elite8.add(winner);
+    }
 
-        // elite 8 ==> final 4
-        public void advanceToFinal4(TeamInfo winner) {
-            final4.add(winner);
-        }
+    // elite 8 ==> final 4
+    public void advanceToFinal4(TeamInfo winner) {
+        final4.add(winner);
+    }
 
-        // final 4 ==> championship
-        public void advanceToChampionship(TeamInfo winner) {
-            championship.add(winner);
-        }
+    // final 4 ==> championship
+    public void advanceToChampionship(TeamInfo winner) {
+        championship.add(winner);
+    }
 
-        // championship ==> champion
-        public void setChampion(TeamInfo winner) {
-            champion = winner;
-        }
+    // championship ==> champion
+    public void setChampion(TeamInfo winner) {
+        champion = winner;
+    }
 
-        // Getters for rounds and champion
-        public ArrayList<TeamInfo> getRoundOf64() {
-            return roundOf64;
-        }
-        public ArrayList<TeamInfo> getRoundOf32() {
-            return roundOf32;
-        }
-        public ArrayList<TeamInfo> getSweet16() {
-            return sweet16;
-        }
-        public ArrayList<TeamInfo> getElite8() {
-            return elite8;
-        }
-        public ArrayList<TeamInfo> getFinal4() {
-            return final4;
-        }
-        public ArrayList<TeamInfo> getChampionship() {
-            return championship;
-        }
-        public TeamInfo getChampion() {
-            return champion;
-        }
+    // Getters for rounds and champion
+    public ArrayList<TeamInfo> getRoundOf64() {
+        return roundOf64;
+    }
+    public ArrayList<TeamInfo> getRoundOf32() {
+        return roundOf32;
+    }
+    public ArrayList<TeamInfo> getSweet16() {
+        return sweet16;
+    }
+    public ArrayList<TeamInfo> getElite8() {
+        return elite8;
+    }
+    public ArrayList<TeamInfo> getFinal4() {
+        return final4;
+    }
+    public ArrayList<TeamInfo> getChampionship() {
+        return championship;
+    }
+    public TeamInfo getChampion() {
+        return champion;
+    }
 
-        // matchup and storing of new winners
+    // matchup and storing of new winners
 
-        public TeamInfo[] getMatchup (ArrayList<TeamInfo> round,int index) { 
+    public TeamInfo[] getMatchup (ArrayList<TeamInfo> round,int index) { 
 
-            TeamInfo[] matchup = new TeamInfo[2];
-            
-            matchup[0] = round.get(index);
-            matchup[1] = round.get(index + 1);
-            return matchup;
-        }
+        TeamInfo[] matchup = new TeamInfo[2];
+        
+        matchup[0] = round.get(index);
+        matchup[1] = round.get(index + 1);
+        return matchup;
+    }
 
-        // clears next round 
+    // clears next round 
 
-        public void clearNextRounds() {
-            roundOf32.clear();
-            sweet16.clear();
-            elite8.clear();
-            final4.clear();
-            championship.clear();
-            champion = null;
-        }
+    public void clearNextRounds() {
+        roundOf32.clear();
+        sweet16.clear();
+        elite8.clear();
+        final4.clear();
+        championship.clear();
+        champion = null;
+    }
 }
