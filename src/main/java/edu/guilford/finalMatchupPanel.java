@@ -8,8 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class FinalMatchupPanel {
-    // tjos class will display the winners of the regions and turn it into the final four matchups and championship
+class FinalMatchupPanel extends JPanel {
+    // this class will display the winners of the regions and turn it into the final four matchups and championship
 
     private Game game;
 
