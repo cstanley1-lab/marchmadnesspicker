@@ -2,122 +2,132 @@ package edu.guilford;
 
 import java.util.ArrayList;
 
-// This class will represent the bracket structure of the tournament
-// controls how the tournament progresses, how teams advance, and how the matchups are organized
-// stores teams in each round and updates as the user picks winners and advances through the bracket
-
 public class Bracket {
-    // 64 teams
-    private ArrayList<TeamInfo> teams;
 
-    // each round is a list of matchups, where each matchup is a pair of teams
-    private ArrayList<TeamInfo> roundOf64;
-    private ArrayList<TeamInfo> roundOf32;
-    private ArrayList<TeamInfo> sweet16;
-    private ArrayList<TeamInfo> elite8;
-    private ArrayList<TeamInfo> final4;
-    private ArrayList<TeamInfo> championship;
+    // this class manages our structure, storing teams by region and round, and tracks winners as they go through the bracket
 
-    private TeamInfo champion;
+    // All tournament teams
+    private ArrayList<Team> teams;
 
-    // constructor to initialize the bracket with the initial teams and matchups
-    public Bracket(ArrayList<TeamInfo> teams) {
+    // teams organized by tournament round 
+    private ArrayList<Team> roundOf64;
+    private ArrayList<Team> roundOf32;
+    private ArrayList<Team> sweet16;
+    private ArrayList<Team> elite8;
+    private ArrayList<Team> final4;
+    private ArrayList<Team> championship;
 
+    // champion
+    private Team champion;
+
+    // constructor to initialize the bracket with all of the 64 teams 
+
+    public Bracket(ArrayList <Team> teams) {
         this.teams = teams;
-
-        // Initialize rounds
+ 
+        // Initialize each round's ArrayList
         roundOf64 = new ArrayList<>();
-        roundOf32 = new ArrayList<>();  
+        roundOf32 = new ArrayList<>();
         sweet16 = new ArrayList<>();
         elite8 = new ArrayList<>();
         final4 = new ArrayList<>();
         championship = new ArrayList<>();
-
+ 
+        // Load all teams into Round of 64
         initializeBracket();
     }
 
-    // round of 64 matchups
-
+    // initialize the bracket by adding all teams to round of 64
     private void initializeBracket() {
-        for (TeamInfo team : teams) {
-            roundOf64.add(team);
+        for (Team t : teams) {
+            roundOf64.add(t);
         }
     }
 
-    // round progression
-    // 64 ==> 32
 
-    public void advanceToRoundOf32(TeamInfo winner) {
+    // advancing teams 
+    public void advanceToRoundOf32(Team winner) {
         roundOf32.add(winner);
     }
 
-    // 32 ==> sweet 16
-    public void advanceToSweet16(TeamInfo winner) {
+    public void advanceToSweet16(Team winner) {
         sweet16.add(winner);
-    }
 
-    // sweet 16 ==> elite 8
-    public void advanceToElite8(TeamInfo winner) {
+        }
+
+        public void advanceToElite8(Team winner) {
         elite8.add(winner);
     }
 
-    // elite 8 ==> final 4
-    public void advanceToFinal4(TeamInfo winner) {
+        public void advanceToFinal4(Team winner) {
         final4.add(winner);
-    }
-
-    // final 4 ==> championship
-    public void advanceToChampionship(TeamInfo winner) {
+        }
+ public void advanceToChampionship(Team winner) {
         championship.add(winner);
     }
-
-    // championship ==> champion
-    public void setChampion(TeamInfo winner) {
+    public void setChampion(Team winner) {
         champion = winner;
     }
 
-    // Getters for rounds and champion
-    public ArrayList<TeamInfo> getRoundOf64() {
+    // getters for each round and champion
+     public ArrayList<Team> getRoundOf64() {
         return roundOf64;
     }
-    public ArrayList<TeamInfo> getRoundOf32() {
+
+    public ArrayList<Team> getRoundOf32() {
         return roundOf32;
     }
-    public ArrayList<TeamInfo> getSweet16() {
+     public ArrayList<Team> getSweet16() {
         return sweet16;
     }
-    public ArrayList<TeamInfo> getElite8() {
+      public ArrayList<Team> getElite8() {
         return elite8;
     }
-    public ArrayList<TeamInfo> getFinal4() {
+       public ArrayList<Team> getFinal4() {
         return final4;
     }
-    public ArrayList<TeamInfo> getChampionship() {
+        public ArrayList<Team> getChampionship() {
         return championship;
     }
-    public TeamInfo getChampion() {
+     public Team getChampion() {
         return champion;
     }
 
-    // matchup and storing of new winners
+    // getting a specific matchup from a round 
+    // pairing teams for games 
+     public Team[] getMatchup(ArrayList<Team> round, int index) {
+        Team[] matchup = new Team[2];
+ 
+        if (index * 2 + 1 >= round.size()) {
+            return null;
+        }
 
-    public TeamInfo[] getMatchup (ArrayList<TeamInfo> round,int index) { 
-
-        TeamInfo[] matchup = new TeamInfo[2];
-        
-        matchup[0] = round.get(index);
-        matchup[1] = round.get(index + 1);
+        matchup[0] = round.get(index * 2);
+        matchup[1] = round.get(index * 2 + 1);
         return matchup;
-    }
+        }
 
-    // clears next round 
-
-    public void clearNextRounds() {
+    // clearing all the round data and restting for a new backet
+    public void resetBracket() {
+        roundOf64.clear();
         roundOf32.clear();
         sweet16.clear();
         elite8.clear();
         final4.clear();
         championship.clear();
         champion = null;
+        initializeBracket();
     }
+
+    // get the region champion for the specific region
+
+      public Team getRegionChampion(String region) {
+        for (Team team : final4) {
+            if (team.getRegion().equals(region)) {
+                return team;
+            }
+        }
+        return null;
+    }
+
 }

@@ -4,99 +4,205 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class BracketPanel extends JPanel {
-    // main GUI panel that will hold everything
-    // Bracket matchups 
-    // Buttons for picking teams
-    // Controls for stats adn suggestions 
+    private Bracket bracket;
 
-    // constructor
+    // storing all of our loaded teams
+    private ArrayList<Team> allTeams;
+
+    // panel to hold the regional buttons
+    private JPanel regionButtonPanel;
+
+    // panel that switches between regiona selection an torunament display
+    private JPanel contentPanel;
+
+    // constructor to initialize the bracket panel with all regions
     public BracketPanel() {
-        
-        // create our title section and add it to the top of the panel
         setLayout(new BorderLayout());
-        JLabel title = new JLabel ("March Madness Bracket Picker", JLabel.CENTER);
-        title.setFont(new Font("Arial", Font.BOLD, 28));
+
+        // Load all teams from data importer
+        allTeams = DataImporter.loadTeams();
+
+        // Create bracket object with all teams
+        bracket = new Bracket(allTeams);
+
+        // Create title label
+        JLabel title = new JLabel("March Madness Bracket Picker 2025-26", JLabel.CENTER);
+        title.setFont(new Font("Arial", Font.BOLD, 32));
+        title.setOpaque(true);
+        title.setBackground(new Color(30, 30, 30));
+        title.setForeground(Color.WHITE);
         add(title, BorderLayout.NORTH);
 
-        // this panel will hold the bracket matchups
-        // we will use a grid layout to organize the matchups in a bracket format
-        JPanel bracketArea = new JPanel();
-        bracketArea.setLayout(new GridLayout (8,2,10,10));
+        // Create content panel that will switch between views
+        contentPanel = new JPanel();
+        contentPanel.setLayout(new BorderLayout());
+        add(contentPanel, BorderLayout.CENTER);
 
-        // placeholder teams 
-        for (int i =1; i<=16; i++) {
-           
-            // two teams for each matchup 
-            JButton team1 = new JButton ("Team " + i);
-            JButton team2 = new JButton ("Team " + (i+16));
-
-            // our action listeners for our buttons to respond to the choosing of teams and update the bracket accordingly
-            team1.addActionListener(new TeamButtonListener());
-            team2.addActionListener(new TeamButtonListener());
-
-            // add our buttons to the bracket area
-            bracketArea.add(team1);
-            bracketArea.add(team2);
-        }
-        add(bracketArea, BorderLayout.CENTER);
-
-        // control panel for stats and suggestions
-        // this will be on the bottom of the main panel
-        JPanel controlPanel = new JPanel();
-
-        // Button that shows more stats 
-        JButton statsButton = new JButton("Show Stats");
-
-        // button for suggested picks based on stats
-        JButton suggestionButton = new JButton("Suggested Pick");
-
-        // Button for possible upset predictions
-        JButton upsetButton = new JButton("Upset Alert");
-
-        // functionality and action listeners for these buttons will be implemented later, but we will add them to the control panel for now
-        statsButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, "Stats functionality coming soon!");
-        });
-
-        suggestionButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, "Suggestion functionality coming soon!");
-        });
-
-        upsetButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, "Upset prediction functionality coming soon!");
-        });
-
-        // add buttons to the control panel
-        controlPanel.add(statsButton);
-        controlPanel.add(suggestionButton);
-        controlPanel.add(upsetButton);
-
-        add(controlPanel, BorderLayout.SOUTH);
+        // Show the region selection view
+        showRegionSelection();
     }
-    // inner class for handling team button clicks
-    private class TeamButtonListener implements ActionListener {
+
+    // displaying the 4 regional buttons for tournament selection
+    private void showRegionSelection() {
+        contentPanel.removeAll();
+
+        // Create panel for region buttons - 2x2 grid
+        regionButtonPanel = new JPanel();
+        regionButtonPanel.setLayout(new GridLayout(2, 2, 15, 15));
+        regionButtonPanel.setBackground(new Color(40, 40, 40));
+
+        // Define regions and their colors for visual appeal
+        String[] regions = { "EAST", "WEST", "SOUTH", "MIDWEST" };
+        Color[] regionColors = {
+                new Color(200, 50, 50), // Red for East
+                new Color(50, 50, 200), // Blue for West
+                new Color(50, 150, 50), // Green for South
+                new Color(200, 150, 50) // Gold for Midwest
+        };
+
+        // Create a button for each region
+        for (int i = 0; i < regions.length; i++) {
+            String region = regions[i];
+            Color regionColor = regionColors[i];
+
+            JButton regionButton = new JButton(region + " REGION");
+            regionButton.setFont(new Font("Arial", Font.BOLD, 24));
+            regionButton.setBackground(regionColor);
+            regionButton.setForeground(Color.WHITE);
+            regionButton.setFocusPainted(false);
+
+            // CHANGED: Add action listener to launch tournament for this region
+            regionButton.addActionListener(e -> {
+                startRegionalTournament(region);
+            });
+
+            regionButtonPanel.add(regionButton);
+        }
+        contentPanel.add(regionButtonPanel, BorderLayout.CENTER);
+
+            // Add a subtitle
+        JLabel subtitle = new JLabel("Select a Region to Begin", JLabel.CENTER);
+        subtitle.setFont(new Font("Arial", Font.PLAIN, 18));
+        subtitle.setOpaque(true);
+        subtitle.setBackground(new Color(60, 60, 60));
+        subtitle.setForeground(Color.WHITE);
+        contentPanel.add(subtitle, BorderLayout.SOUTH);
         
-        @Override
-        public void actionPerformed(ActionEvent e) {
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }
 
-            // get which button was clicked
-            JButton clickedButton = (JButton) e.getSource();
+    // starting the tournament for a specific region
+    private void startRegionalTournament(String region) {
+        // Filter teams by region
+        ArrayList<Team> regionTeams = new ArrayList<>();
+        for (Team team : allTeams) {
+            if (team.getRegion().equals(region)) {
+                regionTeams.add(team);
+            }
+        }
+        
+        // Launch the tournament view for this region
+        RegionalTournamentPanel reginalPanel = new RegionalTournamentPanel(
+            region, 
+            regionTeams, 
+            bracket, 
+            this
+        );
+        
+        contentPanel.removeAll();
+        contentPanel.add(reginalPanel, BorderLayout.CENTER);
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }
 
-            // Highlight the selected team (green) and update the bracket accordingly
-            clickedButton.setBackground(Color.GREEN);
+    // when region tournament is complete, this method is called to update the bracket with the regional champion
+    // returns to main region selection view 
 
-            // feedback for the button you picked
-            JOptionPane.showMessageDialog(null, "You picked: " + clickedButton.getText());
-
+     public void onRegionComplete(Team regionWinner) {
+        // Add region winner to Final Four
+        bracket.advanceToFinal4(regionWinner);
+        
+        // Check if all 4 regions are complete
+        if (bracket.getFinal4().size() == 4) {
+            launchFinalFour();
+        } else {
+            // Return to region selection
+            showRegionSelection();
         }
     }
+
+
+    // launching final four method 
+    // when all 4 regions are complete, 
+    // this method is called to display the final four matchups and allow the user to pick the champion
+
+     private void launchFinalFour() {
+        FinalFourPanel finalFourPanel = new FinalFourPanel(
+            bracket.getFinal4(),
+            bracket,
+            this );
+        
+        contentPanel.removeAll();
+        contentPanel.add(finalFourPanel, BorderLayout.CENTER);
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }
+
+    // tournament champion has been selected
+    // display the champion and offer to restart 
+    public void onTournamentComplete(Team champion) {
+        contentPanel.removeAll();
+        
+        JPanel championPanel = new JPanel();
+        championPanel.setLayout(new BorderLayout());
+        championPanel.setBackground(new Color(30, 30, 30));
+        
+        // Display champion information
+        JLabel championLabel = new JLabel(" CHAMPION ", JLabel.CENTER);
+        championLabel.setFont(new Font("Arial", Font.BOLD, 36));
+        championLabel.setForeground(Color.YELLOW);
+        championPanel.add(championLabel, BorderLayout.NORTH);
+        
+        JLabel championName = new JLabel(champion.getName(), JLabel.CENTER);
+        championName.setFont(new Font("Arial", Font.BOLD, 28));
+        championName.setForeground(Color.WHITE);
+        championPanel.add(championName, BorderLayout.CENTER);
+        
+        JLabel championInfo = new JLabel(champion.getFullInfo().replace("\n", "<br>"), JLabel.CENTER);
+        championInfo.setFont(new Font("Arial", Font.PLAIN, 14));
+        championInfo.setForeground(Color.LIGHT_GRAY);
+       // championPanel.add(championInfo, BorderLayout.SOUTH);
+        
+        // Add restart button
+        JButton restartButton = new JButton("New Bracket");
+        restartButton.setFont(new Font("Arial", Font.PLAIN, 16));
+        restartButton.addActionListener(e -> {
+           
+            // Clear bracket and reset
+            bracket = new Bracket(allTeams);
+            showRegionSelection();
+        });
+        
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(new Color(30, 30, 30));
+        buttonPanel.add(restartButton);
+       
+       JPanel bottomPanel = new JPanel(new BorderLayout());
+       bottomPanel.setBackground(new Color(30, 30, 30));
+       bottomPanel.add(championInfo, BorderLayout.CENTER);
+         bottomPanel.add(buttonPanel, BorderLayout.SOUTH);
+        
+        contentPanel.add(championPanel, BorderLayout.CENTER);
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }
+
 }
