@@ -133,5 +133,4 @@ class RegionalTournamentPanel extends JPanel {
 
         bracketPanel.onRegionComplete(champion);
     }
-
 }

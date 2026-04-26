@@ -1,5 +1,6 @@
 package edu.guilford;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -7,9 +8,10 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-class FinalMatchupPanel extends JPanel {
-    // this class will display the winners of the regions and turn it into the final four matchups and championship
+ class FinalMatchupPanel extends JPanel{
+    // tjos class will display the winners of the regions and turn it into the final four matchups and championship
 
     private Game game;
 
@@ -24,17 +26,72 @@ class FinalMatchupPanel extends JPanel {
         this.finalFourPanel = finalFourPanel;
         this.isChampionship = isChampionship;
 
+        setLayout( new BorderLayout(10,10));
+         setBackground(new Color(30,30,30));
+
         // Layout: 2 columns for team comparison
-        setLayout(new GridLayout(1, 2, 15, 15));
+      
+        JPanel teamsPanel = new JPanel(new GridLayout(1, 2, 15, 15));
         setBackground(new Color(30, 30, 30));
         
         // Create panels for each team
         JPanel team1Panel = createTeamPanel(game.getTeam1(), true);
         JPanel team2Panel = createTeamPanel(game.getTeam2(), false);
  
-        add(team1Panel);
-        add(team2Panel);
+        teamsPanel.add(team1Panel);
+        teamsPanel.add(team2Panel);
+
+        add(teamsPanel, BorderLayout.CENTER);
+        add(createSuggestedPickPanel(), BorderLayout.SOUTH);
     }
+
+    private JPanel createSuggestedPickPanel(){
+        JPanel panel = new JPanel (new BorderLayout(10,5));
+        panel.setBackground(new Color(20,20,20));
+        panel.setBorder(new EmptyBorder(10,20,10,20));
+
+        String prediction = game.getPredictionStatement();
+        Team suggestedWinner = game.getSuggestedWinner();
+
+        JLabel predictionLabel = new JLabel("Statistical Analysis: " + prediction, JLabel.CENTER);
+        predictionLabel.setFont(new Font("Arial", Font.BOLD, 16));
+
+         predictionLabel.setForeground(isChampionship ? Color.MAGENTA : Color.CYAN);
+        panel.add(predictionLabel, BorderLayout.NORTH);
+
+        JButton suggestedPickButton = new JButton();
+        suggestedPickButton.setFont(new Font("Arial", Font.BOLD, 18));
+        suggestedPickButton.setFocusPainted(false);
+
+        if (suggestedWinner != null) {
+            // Clear favorite exists - show blue clickable button
+            suggestedPickButton.setText("SUGGESTED PICK: " + suggestedWinner.getName());
+            suggestedPickButton.setBackground(new Color(50, 100, 150));
+            suggestedPickButton.setForeground(Color.WHITE);
+// CHANGE: When clicked, auto-select winner and notify FinalFourPanel
+            // Handles both semifinal and championship games
+            suggestedPickButton.addActionListener(e -> {
+                game.setWinner(suggestedWinner);
+                if (isChampionship) {
+                    finalFourPanel.onChampionshipComplete(suggestedWinner);
+                } else {
+                    finalFourPanel.onMatchupComplete(suggestedWinner);
+                }
+            });
+        } else {
+            // Statistical tie - show gray disabled button
+            suggestedPickButton.setText("STATISTICAL TIE - NO CLEAR FAVORITE");
+            suggestedPickButton.setBackground(new Color(80, 80, 80));
+            suggestedPickButton.setForeground(Color.LIGHT_GRAY);
+            suggestedPickButton.setEnabled(false);
+    }
+    
+        panel.add(suggestedPickButton, BorderLayout.CENTER);
+
+        return panel;
+    }
+
+
 
     // creating a display panel for a single team with all the stats and info
       private JPanel createTeamPanel(Team team, boolean isTeam1) {
@@ -167,5 +224,6 @@ class FinalMatchupPanel extends JPanel {
         return label;
     }
 
+    
 
 }

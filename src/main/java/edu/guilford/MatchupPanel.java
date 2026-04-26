@@ -1,5 +1,6 @@
 package edu.guilford;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -7,9 +8,10 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import javax.swing.border.EmptyBorder;
 
 public class MatchupPanel extends JPanel {
+
     // this class will display our head to head comparison of two teams in a single amtchup
     // will show statistics with color coding to indicate which team is better in each category
     // allows the user to pick a winner and possible ask for a suggestion
@@ -26,17 +28,63 @@ public class MatchupPanel extends JPanel {
      public MatchupPanel(Game game, RegionalTournamentPanel regionPanel) {
         this.game = game;
         this.regionPanel = regionPanel;
+
+        setLayout(new BorderLayout(10,10));
+        setBackground(new Color(40,40,40));
  
         // Layout: 2 columns for team vs team comparison
-        setLayout(new GridLayout(1, 2, 10, 10));
+       // setLayout(new GridLayout(1, 2, 10, 10));
+       JPanel teamsPanel = new JPanel(new GridLayout(1,2,10,10));
         setBackground(new Color(40, 40, 40));
         
         // Create panels for each team
         team1Panel = createTeamPanel(game.getTeam1(), true);
         team2Panel = createTeamPanel(game.getTeam2(), false);
  
-        add(team1Panel);
-        add(team2Panel);
+        teamsPanel.add(team1Panel);
+        teamsPanel.add(team2Panel);
+        add(teamsPanel, BorderLayout.CENTER);
+        
+        add(createSuggestedPickPanel(), BorderLayout.SOUTH);
+    }
+
+    // new method to create the suggested pick panel at the bottom
+    private JPanel createSuggestedPickPanel() { 
+        JPanel panel = new JPanel( new BorderLayout(10,5));
+        panel.setBackground( new Color(30,30,30));
+        panel.setBorder(new EmptyBorder(10,20,10,20));
+
+        String prediction = game.getPredictionStatement();
+        Team suggestedWinner = game.getSuggestedWinner();
+
+        JLabel predictionLabel = new JLabel ("Statistical prediction: " + prediction, JLabel.CENTER);
+        predictionLabel.setFont(new Font("Arial", Font.BOLD, 13));
+        predictionLabel.setForeground(Color.CYAN);
+        panel.add(predictionLabel, BorderLayout.NORTH);
+
+        JButton suggestedPickButton = new JButton();
+        suggestedPickButton.setFont(new Font("Arial", Font.BOLD, 16));
+        suggestedPickButton.setFocusPainted(false);
+
+        if (suggestedWinner != null) {
+            suggestedPickButton.setText("Suggested Pick: " + suggestedWinner.getName());
+            suggestedPickButton.setBackground(new Color(100, 150, 100));
+            suggestedPickButton.setForeground(Color.WHITE);
+            // when the suggested pick button is clicked, we will automatically select that team as the winner and advance them in the bracket
+            suggestedPickButton.addActionListener(e -> {
+                game.setWinner(suggestedWinner);
+                regionPanel.onMatchupComplete(suggestedWinner);
+            });
+        } else {
+            suggestedPickButton.setText("No clear statistical pick");
+            suggestedPickButton.setBackground(new Color(150, 150, 150));
+            suggestedPickButton.setForeground(Color.WHITE);
+            suggestedPickButton.setEnabled(false);
+        }
+
+        panel.add(suggestedPickButton, BorderLayout.CENTER);
+
+        return panel;
     }
 
     // create a display panel for a single team with all the stats and info
@@ -159,5 +207,4 @@ public class MatchupPanel extends JPanel {
  
         return label;
 }
-   
-    }
+}

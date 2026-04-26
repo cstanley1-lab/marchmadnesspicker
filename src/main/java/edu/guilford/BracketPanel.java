@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class BracketPanel extends JPanel {
+
     private Bracket bracket;
 
     // storing all of our loaded teams
@@ -21,6 +22,9 @@ public class BracketPanel extends JPanel {
 
     // panel that switches between regiona selection an torunament display
     private JPanel contentPanel;
+
+    private JLabel[] regionStatusLabels;
+    private String[] regions;
 
     // constructor to initialize the bracket panel with all regions
     public BracketPanel() {
@@ -53,24 +57,37 @@ public class BracketPanel extends JPanel {
     private void showRegionSelection() {
         contentPanel.removeAll();
 
+        // region button and a status label for each region
+        // showing champion status directly on the main screen for easy reference
+        regionButtonPanel = new JPanel();
+        regionButtonPanel.setLayout(new GridLayout(4, 1, 15, 15));
+        regionButtonPanel.setBackground(new Color(40, 40, 40));
+
         // Create panel for region buttons - 2x2 grid
         regionButtonPanel = new JPanel();
         regionButtonPanel.setLayout(new GridLayout(2, 2, 15, 15));
         regionButtonPanel.setBackground(new Color(40, 40, 40));
 
         // Define regions and their colors for visual appeal
-        String[] regions = { "EAST", "WEST", "SOUTH", "MIDWEST" };
+        regions = new String[] { "EAST", "WEST", "SOUTH", "MIDWEST" };
         Color[] regionColors = {
-                new Color(200, 50, 50), // Red for East
-                new Color(50, 50, 200), // Blue for West
-                new Color(50, 150, 50), // Green for South
+                new Color(50, 50, 200), // blue for East
+                new Color(200, 50, 50), // red for West
+                new Color(255, 165, 0), // orange for South
                 new Color(200, 150, 50) // Gold for Midwest
         };
+
+        // Initialize status labels for each region
+        regionStatusLabels = new JLabel[regions.length];
 
         // Create a button for each region
         for (int i = 0; i < regions.length; i++) {
             String region = regions[i];
             Color regionColor = regionColors[i];
+
+            // holding our button and status label for each region in a sub-panel for better layout control
+            JPanel regionRowPanel = new JPanel(new BorderLayout(10,5));
+            regionRowPanel.setBackground(new Color(40, 40, 40));
 
             JButton regionButton = new JButton(region + " REGION");
             regionButton.setFont(new Font("Arial", Font.BOLD, 24));
@@ -83,7 +100,23 @@ public class BracketPanel extends JPanel {
                 startRegionalTournament(region);
             });
 
-            regionButtonPanel.add(regionButton);
+            // create status label showing regional champion if selected, or "no champion selected" if not
+            // appearing below each region button for easy reference on the main screen
+            // starts of gray and italic and turns green and bold when a champion is selected for that region
+            JLabel statusLabel = new JLabel("No champion selected", JLabel.CENTER);
+            statusLabel.setFont(new Font("Arial", Font.ITALIC, 14));
+            statusLabel.setForeground(Color.LIGHT_GRAY);
+            statusLabel.setOpaque(true);
+            statusLabel.setBackground(new Color(40, 40, 40));
+            statusLabel.setForeground (Color.LIGHT_GRAY);
+            regionStatusLabels[i] = statusLabel;
+
+            regionRowPanel.add(regionButton, BorderLayout.CENTER);
+            regionRowPanel.add(statusLabel, BorderLayout.SOUTH);
+
+            updateRegionStatus(i); // initialize status label
+
+            regionButtonPanel.add(regionRowPanel);
         }
         contentPanel.add(regionButtonPanel, BorderLayout.CENTER);
 
@@ -97,6 +130,22 @@ public class BracketPanel extends JPanel {
         
         contentPanel.revalidate();
         contentPanel.repaint();
+    }
+
+    // updating the status label for a region when a champion is selected for that region
+    // if champion exists show champion name and seed, if not show "no champion selected"
+    public void updateRegionStatus( int regionIndex) {
+        if (regionStatusLabels == null || regionIndex < 0 || regionIndex >= regionStatusLabels.length) {
+            return; // safety check
+        }
+        String region = regions[regionIndex];
+        Team champion = bracket.getRegionalChampion(region);
+        JLabel statusLabel = regionStatusLabels[regionIndex];
+        if (champion != null) {
+            statusLabel.setText(champion.getName() + " (Seed: " + champion.getSeed() + ")");
+        } else {
+            statusLabel.setText("No champion selected");
+        }
     }
 
     // starting the tournament for a specific region
@@ -129,6 +178,8 @@ public class BracketPanel extends JPanel {
      public void onRegionComplete(Team regionWinner) {
         // Add region winner to Final Four
         bracket.advanceToFinal4(regionWinner);
+
+        bracket.setRegionalChampion(regionWinner.getRegion(), regionWinner); // store regional champion in bracket for easy access on main screen
         
         // Check if all 4 regions are complete
         if (bracket.getFinal4().size() == 4) {
@@ -138,6 +189,7 @@ public class BracketPanel extends JPanel {
             showRegionSelection();
         }
     }
+
 
 
     // launching final four method 

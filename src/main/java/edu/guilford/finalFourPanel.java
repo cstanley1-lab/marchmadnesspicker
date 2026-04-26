@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class FinalFourPanel extends JPanel {
+ class FinalFourPanel extends JPanel {
 
     // this class will display the final four tournament
     // the 4 regional champions will be displayed and later be picked for who is the

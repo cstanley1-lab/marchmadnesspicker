@@ -20,6 +20,12 @@ public class Bracket {
     // champion
     private Team champion;
 
+    // storing the winning team for each region so we can display them on our main region selection screen
+    private Team eastRegionChampion;
+    private Team westRegionChampion;
+    private Team southRegionChampion;
+    private Team midwestRegionChampion;
+
     // constructor to initialize the bracket with all of the 64 teams 
 
     public Bracket(ArrayList <Team> teams) {
@@ -32,6 +38,13 @@ public class Bracket {
         elite8 = new ArrayList<>();
         final4 = new ArrayList<>();
         championship = new ArrayList<>();
+
+        // initalize regional champions to null
+        // making sure our main screen shows "no champion selected" initially
+        eastRegionChampion = null;
+        westRegionChampion = null;
+        southRegionChampion = null;
+        midwestRegionChampion = null;
  
         // Load all teams into Round of 64
         initializeBracket();
@@ -67,6 +80,43 @@ public class Bracket {
     }
     public void setChampion(Team winner) {
         champion = winner;
+    }
+
+    // method to set the regional champion when a region tournamnet is completed, so we can display it on the main screen
+    //stores the winner in the appropriate variable based on the region they are from
+    public void setRegionalChampion(String region, Team champion) {
+        switch (region.toLowerCase()) {
+            case "east":
+                eastRegionChampion = champion;
+                break;
+            case "west":
+                westRegionChampion = champion;
+                break;
+            case "south":
+                southRegionChampion = champion;
+                break;
+            case "midwest":
+                midwestRegionChampion = champion;
+                break;
+        }
+    }
+
+    // new method to get the regional champion for a specific region, so we can display it on the main screen
+    // returns null if thatt region hasnt been completed yet so we can say "no champion selected" on the main screen
+    // returns team if completed 
+    public Team getRegionalChampion(String region) {
+        switch (region.toLowerCase()) {
+            case "east":
+                return eastRegionChampion;
+            case "west":
+                return westRegionChampion;
+            case "south":
+                return southRegionChampion;
+            case "midwest":
+                return midwestRegionChampion;
+            default:
+                return null;
+        }
     }
 
     // getters for each round and champion
@@ -116,6 +166,15 @@ public class Bracket {
         final4.clear();
         championship.clear();
         champion = null;
+         
+        // reset regional champions when starting a new bracket
+        // ensuring the main screen shows all regions as "no champion selected" when starting a new bracket
+        eastRegionChampion = null;
+        westRegionChampion = null;
+        southRegionChampion = null;
+        midwestRegionChampion = null;
+
+
         initializeBracket();
     }
 
@@ -129,5 +188,4 @@ public class Bracket {
         }
         return null;
     }
-
 }

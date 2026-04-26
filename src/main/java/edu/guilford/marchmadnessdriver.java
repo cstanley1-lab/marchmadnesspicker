@@ -16,10 +16,11 @@ public class marchmadnessdriver {
         frame.setSize(1200,800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
-        frame.setVisible(true);
+        
 
         BracketPanel mainPanel = new BracketPanel();
         frame.add(mainPanel);
+        frame.setVisible(true);
     }
 
 }
