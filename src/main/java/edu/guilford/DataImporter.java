@@ -9,86 +9,89 @@ public class DataImporter {
      public static ArrayList<Team> loadTeams() {
         ArrayList<Team> teams = new ArrayList<>();
  
-        // ============================
+
         // EAST REGION - SEEDS 1-16
-        // ============================
+        // Duke, UConn, Michigan State,Kansas,St Johns,Louisville,Ucla
+        // Ohio state,Tcu, ucf, south florida,northern iowa, cal baptist
+        //north dakotat state,Furman, Siena 
         
-        teams.add(new Team("Duke", 1, "EAST", "Jon Scheyer", 30, 4, 
-                79.2, 64.1, 118.5, 96.2, 22.3, 55.8, 11.9, 52.3,
-                "Fast-paced offense, strong perimeter game", "Spacing and tempo", 
-                "Cooper Flagg, Tyrese Proctor", "120-50", "10-3"));
+        // Duke stats updated and completed
+        teams.add(new Team("Duke", 1, "EAST", "Jon Scheyer", 30, 2, 
+                81.6, 63.6, 128.1, 90.7, 37.7, 56.7, 13.4, 57.9,
+                "Fast-paced offense, interior domination", "Spacing and tempo", 
+                "Cameron Boozer, Isiah Evans", "120-50", "11-4"));
+        // UConn stats updated and completed
+        teams.add(new Team("Uconn", 2, "EAST", "Dan Hurley", 28, 4,
+                76.6, 65.2, 122.6, 92.8, 29.78, 54.3, 13.9, 53.9,
+                "Ball movement, and off ball movement", "Bend dont break",
+                "Solo Ball, Tarris Reed Jr.", "77-34", "20-5"));
         
-        teams.add(new Team("Iowa State", 2, "EAST", "T.J. Otzelberger", 28, 6,
-                77.8, 66.5, 117.2, 99.1, 18.1, 54.2, 12.5, 50.8,
-                "Ball movement, 3-point heavy", "Defensive pressure",
-                "Tamin Lipsey, Tre Jackson", "45-30", "12-4"));
-        
-        teams.add(new Team("Alabama", 3, "EAST", "Nate Oats", 27, 7,
+        teams.add(new Team("Michigan State", 3, "EAST", "Tom Izzo", 27, 7,
                 82.1, 67.3, 120.1, 100.5, 19.6, 56.1, 13.2, 51.5,
                 "Elite scoring, transition game", "Uptempo offense",
                 "Jaden Bradley, Mark Sears", "80-35", "8-2"));
         
-        teams.add(new Team("Arizona", 4, "EAST", "Tommy Lloyd", 26, 8,
+        teams.add(new Team("Kansas", 4, "EAST", "Tommy Lloyd", 26, 8,
                 76.5, 68.2, 115.3, 101.2, 14.1, 53.5, 14.1, 49.2,
                 "Defensive minded, halfcourt", "Defensive intensity",
                 "Jiolani Martin, Kylan Boswell", "60-40", "9-3"));
         
-        teams.add(new Team("Marquette", 5, "EAST", "Shaka Smart", 25, 9,
+        teams.add(new Team("St Johns", 5, "EAST", "Shaka Smart", 25, 9,
                 75.2, 69.1, 113.8, 102.1, 11.7, 52.8, 15.2, 48.5,
                 "Balanced approach", "3-and-D philosophy",
                 "Stevie Mitchell, Oso Ighoefe", "50-35", "7-5"));
         
-        teams.add(new Team("Houston", 6, "EAST", "Kelvin Sampson", 28, 6,
+        teams.add(new Team("Louisville", 6, "EAST", "Kelvin Sampson", 28, 6,
                 74.3, 62.5, 112.5, 95.8, 16.7, 51.2, 12.8, 50.1,
                 "Defensive pressure, transition", "Tough defense",
                 "Jarace Walker, LJ Cryer", "65-45", "11-2"));
         
-        teams.add(new Team("Illinois", 7, "EAST", "Brad Underwood", 27, 7,
+        teams.add(new Team("UCLA", 7, "EAST", "Brad Underwood", 27, 7,
                 78.9, 67.8, 116.5, 100.2, 16.3, 54.6, 13.5, 51.8,
                 "Inside-out game, balanced", "Player development",
                 "Terrence Shannon Jr., Marcus Domask", "55-40", "6-4"));
         
-        teams.add(new Team("West Virginia", 8, "EAST", "Darian DeVries", 25, 9,
+        teams.add(new Team("Ohio state", 8, "EAST", "Darian DeVries", 25, 9,
                 73.1, 70.2, 110.5, 103.8, 6.7, 50.1, 16.9, 47.2,
                 "Press defense, chaos", "Defensive suffocation",
                 "Javon Bennett, Quentin Millora-Brown", "40-50", "5-6"));
         
-        teams.add(new Team("Rutgers", 9, "EAST", "Steve Pikiell", 24, 10,
+        teams.add(new Team("TCU", 9, "EAST", "Steve Pikiell", 24, 10,
                 71.8, 71.5, 108.2, 104.5, 3.7, 48.9, 17.5, 46.8,
                 "Grind-it-out defense", "Rebounding focus",
                 "Ace Bailey, Tyson Acuff", "35-55", "3-7"));
         
-        teams.add(new Team("Providence", 10, "EAST", "Ed Cooley", 23, 11,
+        teams.add(new Team("UCF", 10, "EAST", "Ed Cooley", 23, 11,
                 72.5, 72.3, 109.1, 105.2, 3.9, 49.2, 18.1, 45.9,
                 "Perimeter focused", "3-point shooting",
                 "Ed Cooley, Jayson Carter", "30-60", "2-8"));
         
-        teams.add(new Team("Memphis", 11, "EAST", "Penny Hardaway", 22, 12,
+        teams.add(new Team("South Florida", 11, "EAST", "Penny Hardaway", 22, 12,
                 76.3, 73.1, 111.8, 106.5, 5.3, 51.5, 16.8, 48.2,
                 "Athleticism, pace", "Transition basketball",
                 "PJ Launching, Tyrese Martin", "25-65", "1-9"));
         
-        teams.add(new Team("Dayton", 12, "EAST", "Anthony Grant", 21, 13,
+        teams.add(new Team("Northern Iowa", 12, "EAST", "Anthony Grant", 21, 13,
                 74.2, 74.5, 110.1, 107.8, 2.3, 50.8, 17.5, 46.1,
                 "Mid-range reliant", "Consistency",
                 "Javon Bennett, Malachi Smith", "20-70", "0-10"));
         
-        teams.add(new Team("Samford", 13, "EAST", "Hank Thorns", 24, 10,
+        teams.add(new Team("Cal Baptist", 13, "EAST", "Hank Thorns", 24, 10,
                 72.1, 75.2, 108.5, 109.1, -0.6, 49.1, 18.9, 44.5,
                 "Mid-major scrappy", "Effort based",
                 "Jalen Shackelford, KyrokeKyrie", "15-75", "N/A"));
         
-        teams.add(new Team("Wyoming", 14, "EAST", "Jeff Linder", 20, 14,
+        teams.add(new Team("North Dakota State", 14, "EAST", "Jeff Linder", 20, 14,
                 70.5, 76.1, 106.8, 110.5, -3.7, 47.9, 19.2, 43.2,
                 "Offensive struggle", "Defense",
                 "Hunter Maldonado, Langston Pesz", "10-80", "N/A"));
         
-        teams.add(new Team("Grambling State", 15, "EAST", "Kenny Jones", 18, 16,
+        teams.add(new Team("Furman", 15, "EAST", "Kenny Jones", 18, 16,
                 68.9, 78.5, 104.2, 112.8, -8.6, 45.2, 20.1, 41.1,
                 "Mid-major struggles", "Limited resources",
                 "Chris Forrest, TJ Madkins", "5-85", "N/A"));
         
-        teams.add(new Team("Colgate", 16, "EAST", "Dan Raymond", 19, 15,
+        teams.add(new Team("Siena", 16, "EAST", "Dan Raymond", 19, 15,
                 69.2, 79.1, 105.1, 114.2, -9.1, 46.1, 21.5, 40.5,
                 "Patriot League champion", "League success",
                 "Tamir Megahed, Cam Marshall", "0-90", "N/A"));
