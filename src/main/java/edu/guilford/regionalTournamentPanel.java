@@ -43,8 +43,12 @@ class RegionalTournamentPanel extends JPanel {
         this.bracket = bracket;
         this.bracketPanel = bracketPanel;
 
+        // 4/27/26
+        // initialize currentRound in the traditional march madness bracket order (1
+        // vs 16, 2 vs 15, etc.) to ensure matchups are correct
+
         // Initialize tournament state
-        this.currentRound = new ArrayList<>(regionTeams);
+        this.currentRound = initializeTraditionalBracket(regionTeams);
         this.nextRoundWinners = new ArrayList<>();
         this.currentMatchupIndex = 0;
         this.roundLevel = 0;
@@ -73,6 +77,45 @@ class RegionalTournamentPanel extends JPanel {
 
         // Show first matchup
         showNextMatchup();
+    }
+
+    // 4/27/26 changes
+    // initialize teams in a traditional bracket order (1 vs 16, 2 vs 15, etc.) to
+    // ensure matchups are correct
+    // ensuring rounds progress and winners face proper opponents in subsequent rounds
+    private ArrayList<Team> initializeTraditionalBracket(ArrayList<Team> teams) {
+        ArrayList<Team> bracket = new ArrayList<>();
+        ArrayList<Team> sorted = new ArrayList<>();
+        sorted.addAll(teams);
+        sorted.sort((t1, t2) -> Integer.compare(t1.getSeed(), t2.getSeed()));
+
+        java.util.function.IntFunction<Team> findBySeed = (seed) -> {
+            for (Team t : sorted) {
+                if (t.getSeed() == seed)
+                    return t;
+
+            }
+
+            return null;
+        };
+
+        int[] traditionalOrder = {
+                1, 16,
+                8, 9,
+                5, 12,
+                4, 13,
+                6, 11,
+                3, 14,
+                7, 10,
+                2, 15
+        };
+        for (int seed : traditionalOrder) {
+            Team team = findBySeed.apply(seed);
+            if (team != null) {
+                bracket.add(team);
+            }
+        }
+        return bracket;
     }
 
     // nextmatchup method
