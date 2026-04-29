@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Bracket {// this class manages our structure, storing teams by region and round, and
-                      // tracks winners as they go through the bracket
+public class Bracket {
+    // This class will represent our entire tournament bracket
+    // this class will store all the teams, organize them by the rounds and track winners as we progress through the tournament
+    // other classes will interact with the bracket to get matchup data and update winners as the user makes picks
 
     // All tournament teams
     private ArrayList<Team> teams;
@@ -53,7 +55,9 @@ public class Bracket {// this class manages our structure, storing teams by regi
     }
 
     // initialize the bracket by adding all teams to round of 64
-   private void initializeBracket() {
+    // ensuring they are in the correct order based on region and seed for proper matchups
+    // sorts team by region first, then by seed within each region to ensure correct matchup order (1 vs 16, 2 vs 15, etc.)
+    private void initializeBracket() {
         Collections.sort(teams, new Comparator<Team>() {
             @Override
             public int compare(Team t1, Team t2) {
@@ -70,7 +74,7 @@ public class Bracket {// this class manages our structure, storing teams by regi
         }
     }
 
-    // advancing teams
+    // advancing teams to the next round as winners are determined, called by the matchup panels when a winner is picked
     public void advanceToRoundOf32(Team winner) {
         roundOf32.add(winner);
     }
@@ -144,6 +148,7 @@ public class Bracket {// this class manages our structure, storing teams by regi
     public ArrayList<Team> getRoundOf32() {
         return roundOf32;
     }
+
     public ArrayList<Team> getSweet16() {
         return sweet16;
     }
@@ -201,7 +206,7 @@ public class Bracket {// this class manages our structure, storing teams by regi
 
     // get the region champion for the specific region
 
-        public Team getRegionChampion(String region) {
+    public Team getRegionChampion(String region) {
         for (Team team : final4) {
             if (team.getRegion().equals(region)) {
                 return team;

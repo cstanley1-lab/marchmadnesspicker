@@ -98,33 +98,33 @@ public class DataImporter {
  
         
         // WEST REGION - SEEDS 1-16
-      
-        // Arzizona filled and completed
+        // west region if filled and updated
+        
         teams.add(new Team("Arizona", 1, "WEST", "Tommy Lloyd", 30, 2,
                 86.2, 69.4, 128.1, 90.0, 38.06, 54.7, 14.2, 75.6,
                 "Dominate the interior", "Physicality and toughness",
                 "Koa Peat, Brayden Burries", "66-39", "10-5"));
-        // Purdue filled and completed
+        
         teams.add(new Team("Purdue", 2, "WEST", "Matt Painter", 24, 8,
                 81.6, 70.5, 131.6, 100.5, 31.08, 57.6, 13.5, 74.3,
                 "Guard driven, screen and roll", "Run through our engine",
                 "Braden Smith, Trey Kaufman-Renn", "54-37", "24-17"));
-        // Gonzaga filled and completed
+   
         teams.add(new Team("Gonzaga", 3, "WEST", "Mark Few", 29, 3,
                 84.3, 66.2, 121.1, 94.1, 26.98, 55.6, 17.6, 76.3,
                 "Balanced, resilient", "Defensive toughness",
                 "Graham Ike, Braden Huff", "48-28", "45-26"));
-        // Arkansas filled and completed
+        
         teams.add(new Team("Arkansas", 4, "WEST", "John Calipari", 24, 8,
                 90.2, 81.0, 127.9, 102.4, 25.47, 56.4, 13.5, 70.8,
                 "Half-court offensive sets", "Rely on guard play",
                 "Darius Accuff Jr., Maleek Thomas", "54-37", "60-23"));
-        // Wisconsin filled and completed
+
         teams.add(new Team("Wisconsin", 5, "WEST", "Greg Gard", 22, 10,
                 83.0, 76.1, 125.2, 102.1, 23.09, 54.5, 12.5, 73.4,
                 "Fluent offense", "We are the underdogs",
                 "Nick Boyd, Austin Rapp", "41-28", "7-8"));
-        // BYU filled and completed
+       
         teams.add(new Team("BYU", 6, "WEST", "Kevin Young", 260, 12,
                 83.5, 75.4, 125.1, 102.3, 22.78, 54.4, 14.2, 73.3,
                 "Efficient offense", "Ball movement",
@@ -134,218 +134,219 @@ public class DataImporter {
                 81.5, 71.3, 121.0, 100.4, 20.64, 55.3, 16.1, 76.3,
                 "Uptempo, transition", "Athlete development",
                 "Tre Donaldson, Ernest Udeh Jr.", "12-11", "0-0"));
-        // Villanova filled and completed
+        
         teams.add(new Team("Villanova", 8, "WEST", "Kevin Willard", 24, 8,
                 77.1, 71.2, 120.7, 100.8, 19.92, 53.8, 16.0, 69.9,
                 "Defensive focus, grinding", "Team defense",
                 "Acaden Lewis, Devin Askew", "71-40", "4-8"));
         
-        teams.add(new Team("Utah State", 9, "WEST", "Randy Bennett", 24, 10,
-                73.5, 71.2, 111.8, 104.5, 7.3, 50.1, 17.2, 47.8,
+        teams.add(new Team("Utah State", 9, "WEST", "Ben Jacobson ", 26, 6,
+                81.4, 71.2, 123.0, 101.5, 21.53, 56.3, 17.4, 69.4,
                 "Execution, fundamentals", "Coaching",
-                "Logan Johnson, Matthias Tass", "40-65", "8-6"));
+                "Mason Falslev, Karson Templin", "8-27", "4-5"));
+       
+        teams.add(new Team("Missouri", 10, "WEST", "Dennis Gates", 20, 12,
+                79.2, 75.5, 119.2, 97.2, 14.93, 55.1, 14.2, 71.0,
+                "Get to the hole", "Energy",
+                "Mark Mitchell, Aaron Rowe", "23-30", "1-4"));
         
-        teams.add(new Team("Missouri", 10, "WEST", "Isaac Brown", 22, 12,
-                72.1, 72.8, 110.2, 105.9, 4.3, 49.5, 18.5, 46.2,
-                "Mid-major scrappy", "Energy",
-                "Tyson Etienne, Jaykell Martin", "30-75", "N/A"));
+        teams.add(new Team("Texas", 11, "WEST", "Sean Miller", 18, 14,
+                81.8, 76.1, 124.9, 104.4, 20.57, 54.1, 11.5, 76.3,
+                "Iso ball", "Feed the hot hand",
+                "Jordan Pope, Tramon Mark", "40-42", "25-14"));
         
-        teams.add(new Team("Texas", 11, "WEST", "Grant Illingworth", 21, 13,
-                71.8, 73.5, 109.8, 106.8, 3.0, 48.9, 19.1, 45.1,
-                "Summit League strong", "Consistency",
-                "Mike Daum, Zach Borg", "25-80", "N/A"));
+        teams.add(new Team("High Point", 12, "WEST", "Flynn Clayman", 28, 4,
+                86.4, 72.8, 117.5, 107.9, 9.52, 54.5, 18.4, 70.7,
+                "High intensity", "Outscore not outdefend",
+                "Rob Martin, Terry Anderson", "1-2", "N/A"));
         
-        teams.add(new Team("High Point", 12, "WEST", "Richard Pitino", 20, 14,
-                70.5, 74.2, 108.5, 107.9, 0.6, 47.8, 19.8, 44.5,
-                "Defensive pressure", "Rebounding",
-                "Javon Bennett, Jamal Mashburn Jr", "20-85", "N/A"));
+        teams.add(new Team("Hawai'i", 13, "WEST", "Eran Ganot", 24, 8,
+                78.7, 71.2, 107.2, 101.6, 5.58, 52.0, 14.9, 76.7,
+                "Crash the glass and create opportunities", "Everyone rebounds",
+                "Isaac Johnson, Hunter Erickson", "1-6", "N/A"));
         
-        teams.add(new Team("Hawai'i", 13, "WEST", "Danny Sprinkle", 22, 12,
-                71.2, 75.1, 109.1, 109.2, -0.1, 48.5, 20.2, 43.8,
-                "Big Sky Conference", "Pace control",
-                "RJ Cole, Amin Adamu", "15-90", "N/A"));
+        teams.add(new Team("Kennesaw State", 14, "WEST", "Antoine Pettway", 19, 13,
+                80.0, 78.3, 110.7, 117.6, 1.19, 50.4, 13.9, 72.4,
+                "Balance", "Operate with discipline",
+                "RJ Johnson, Simeon Cottle", "0-2", "N/A"));
+       
+        teams.add(new Team("Queens (NC)", 15, "WEST", "Grant Leonard", 19, 13,
+                84.4, 83.8, 115.8, 117.6, -1.77, 56.4, 13.0, 69.3,
+                "OFfense Offesnse Offense", "Dont worry about defense",
+                "Nasir Mann, Chris Ashby", "0-0", "N/A"));
         
-        teams.add(new Team("Kennesaw State", 14, "WEST", "David Patrick", 19, 15,
-                69.8, 76.5, 107.2, 110.8, -3.6, 46.9, 21.1, 42.5,
-                "Offensive struggles", "Defense",
-                "Isaac Mattai, Chris Ando", "10-95", "N/A"));
-        
-        teams.add(new Team("Queens (NC)", 15, "WEST", "Nick Robinson", 17, 17,
-                68.5, 77.9, 105.8, 112.5, -6.7, 45.2, 21.9, 41.2,
-                "Limited resources", "Effort",
-                "Rudi Sola, Gime Gyampoh", "5-100", "N/A"));
-        
-        teams.add(new Team("Long Island", 16, "WEST", "Robert Tobin", 16, 18,
-                67.2, 78.5, 103.5, 113.8, -10.3, 43.8, 23.2, 39.1,
-                "MEAC Conference", "Team building",
-                "Antonio Daye Jr., Juwon Lemons", "0-105", "N/A"));
+        teams.add(new Team("Long Island", 16, "WEST", "Rod Strickland", 22, 10,
+                73.6, 71.7, 105.7, 109.7, -3.99, 52.8, 16.2, 69.8,
+                "Everyone eats", "Team building",
+                "Jamal Fuller, Malachi Davis", "0-8", "N/A"));
  
         // SOUTH REGION - SEEDS 1-16
+        // completed and updated
        
         
-        teams.add(new Team("Auburn", 1, "SOUTH", "Tony Barbee", 31, 3,
-                83.4, 62.5, 122.1, 93.2, 28.9, 58.2, 10.5, 54.9,
-                "Elite scoring, three-point dominant", "Offensive explosion",
-                "Johni Broome, Jalin Williams", "140-35", "12-2"));
+        teams.add(new Team("Florida", 1, "SOUTH", "Todd Golden", 25, 7,
+                87.1, 71.5, 126.1, 92.4, 33.57, 54.2, 13.5, 77.9,
+                "Play vertical and shoot", "Feed the bigs",
+                "Boogie Fland, Thomas Haugh", "51-20", "7-3"));
         
-        teams.add(new Team("Tennessee", 2, "SOUTH", "Rick Barnes", 29, 5,
-                81.8, 63.9, 119.5, 96.1, 23.4, 56.8, 11.8, 53.2,
-                "Balanced attack", "Defense and depth",
-                "Santiago Vescovi, Zakai Zeigler", "125-45", "11-4"));
+        teams.add(new Team("Houston", 2, "SOUTH", "Kelvin Sampson", 26, 6,
+                76.8, 62.3, 124.7, 90.8, 33.84, 51.9, 17.7, 72.8,
+                "Attack and defend", "Defense and depth",
+                "Kingston Flemings, Emmanual Sharp", "47-32", "31-22"));
+       
+        teams.add(new Team("Illinois", 3, "SOUTH", "Brad Underwood", 25, 7,
+                83.2, 68.8, 131.2, 97.5, 33.67, 54.7, 10.1, 74.6,
+                "Eurocentric playstyle", "Pass and play big",
+                "Tomislav Ivisic, Keaton Wagler", "50-36", "12-10"));
         
-        teams.add(new Team("Miami", 3, "SOUTH", "Jim Larranaga", 27, 7,
-                78.2, 65.8, 117.2, 99.5, 17.7, 54.1, 13.5, 50.8,
-                "Guard heavy, transition", "Recruiting and development",
-                "Zach King, Nijemachi Njeuland", "90-50", "7-3"));
-        
-        teams.add(new Team("Texas Tech", 4, "SOUTH", "Mark Adams", 26, 8,
-                76.1, 67.2, 114.5, 100.8, 13.7, 52.5, 14.2, 48.9,
+        teams.add(new Team("Nebraska", 4, "SOUTH", "Fred Hoiberg", 26, 6,
+                77.1, 66.2, 119.5, 93.0, 26.58, 55.5, 16.6, 74.6,
                 "Defensive juggernaut", "Defensive intensity",
-                "De'Vion Harmon, Tyson Jolly", "85-60", "9-5"));
+                "Sam Hoiberg, Pryce Sandfort", "0-7", "3-5"));
+       
+        teams.add(new Team("Vanderbilt", 5, "SOUTH", "Mark Byington", 24, 8,
+                85.8, 75.5, 127.1, 99.8, 27.35, 55.3, 15.3, 71.6,
+                "Play through adversity", "Adapt and overcome",
+                "Tyler Tanner, Jalen Washington", "10-18", "1-2"));
         
-        teams.add(new Team("Clemson", 5, "SOUTH", "Brad Brownell", 25, 9,
-                74.8, 68.5, 112.8, 101.9, 10.9, 51.2, 15.1, 49.2,
-                "ACC balanced", "Coaching stability",
-                "Chase Hunter, Ian Schieffelin", "75-70", "8-4"));
+        teams.add(new Team("North Carolina", 6, "SOUTH", "Hubert Davis", 274, 8,
+                79.7, 71.1, 120.8, 100.5, 20.11, 54.3, 11.8, 75.6,
+                "Attack the glass or shoot the 3", "Switch everything",
+                "Seth Trimble, Henri Veesar", "134-52", "6-3"));
+      
+        teams.add(new Team("Saint Mary's", 7, "SOUTH", "Mickey McConnell ", 27, 5,
+                76.8, 65.2, 119.2, 97.3, 21.87, 52.8, 13.5, 78.7,
+                "Rebound and kick out", "Consistency and efficiency",
+                "Augustas Marciulionis, Alex Ducas", "8-15", "0-0"));
         
-        teams.add(new Team("Michigan State", 6, "SOUTH", "Tom Izzo", 27, 7,
-                77.5, 66.1, 115.9, 98.5, 17.4, 53.8, 12.9, 52.1,
-                "Experienced, physical", "Defense and tournaments",
-                "Jaden Akins, Malik Hall", "130-50", "22-8"));
-        
-        teams.add(new Team("Stanford", 7, "SOUTH", "Jerod Haase", 24, 10,
-                73.5, 69.8, 111.2, 102.8, 8.4, 50.9, 16.2, 47.5,
-                "Balanced, Stanford education", "Consistency and efficiency",
-                "Austin Parker, Kerr Kriisa", "55-70", "6-8"));
-        
-        teams.add(new Team("Cincinnati", 8, "SOUTH", "Wes Miller", 23, 11,
-                72.8, 70.5, 110.5, 103.9, 6.6, 49.8, 17.1, 46.8,
-                "American Athletic strong", "Tournament experience",
-                "Landers Nolley II, Javel Dean", "45-80", "5-9"));
-        
-        teams.add(new Team("Pepperdine", 9, "SOUTH", "Lamont Smith", 22, 12,
-                71.5, 71.9, 109.1, 104.8, 4.3, 48.5, 18.3, 45.2,
-                "West Coast small ball", "Development",
-                "Darius Washington, Devin Jordan", "35-85", "N/A"));
-        
-        teams.add(new Team("Butler", 10, "SOUTH", "LaVall Jordan", 21, 13,
-                70.2, 73.2, 107.8, 106.5, 1.3, 47.2, 19.5, 44.1,
+        teams.add(new Team("Clemson", 8, "SOUTH", "Brad Brownell", 22, 10,
+                73.8, 66.7, 116.5, 98.0, 18.61, 52.6, 15.3, 75.3,
+                "Grit and grind", "Tournament experience",
+                "Dillon Hunter, Nick Davidson", "14-15", "6-9"));
+       
+        teams.add(new Team("Iowa", 9, "SOUTH", "Ben McCollum", 20, 12,
+                74.5, 66.3, 123.7, 93.5, 23.39, 56.4, 17.9, 73.0,
+                "Move the ball and create opportunities", "Slow the game down",
+                "Bennett Stirtz, Tavion Banks", "34-32", "4-2"));
+       
+        teams.add(new Team("Texas A&M", 10, "SOUTH", "Bucky McMillan", 21, 13,
+                86.1, 78.9, 119.4, 100.7, 18.69, 53.8, 15.7, 68.4,
                 "Mid-major solid", "Cinderella appeal",
-                "Jayden Aidoo, Langston Pesz", "30-90", "N/A"));
+                "Zach Clemson, Ruben Dominguez", "15-18", "0-1"));
+      
+        teams.add(new Team("VCU", 11, "SOUTH", "Phil Martelli Jr.", 25, 7,
+        80.8, 71.8, 119.2, 101.8, 17.44, 53.6, 14.8, 73.2,
+                "Speed and Skill", "We are the underdog",
+                "Terrance Hill jr , Christian Fermin", "14-21", "0-1"));
         
-        teams.add(new Team("UT San Antonio", 11, "SOUTH", "Steve Henson", 20, 14,
-                69.8, 74.1, 106.9, 107.8, -0.9, 46.8, 20.1, 43.5,
-                "Conference USA strong", "Defensive grind",
-                "Jhivvan Jackson, JP Moorman", "25-95", "N/A"));
-        
-        teams.add(new Team("Western Kentucky", 12, "SOUTH", "Rick Stansbury", 19, 15,
-                68.5, 75.2, 105.5, 108.9, -3.4, 45.5, 20.8, 42.2,
+        teams.add(new Team("McNeese", 12, "SOUTH", "Bill Armstrong", 27, 5,
+                76.5, 67.4, 114.5, 102.0, 12.49, 50.7, 20.9, 68.4,
                 "Mid-American Conference", "Offensive creativity",
-                "Nathan Lighton, Jake Stephens", "20-100", "N/A"));
+                "Larry Johnson, Jerell Colbert", "20-100", "N/A"));
+
+        teams.add(new Team("Troy", 13, "SOUTH", "Adam Howard", 21, 11,
+                77.3, 74.5, 110.4, 109.2, 1.16, 51.5, 14.3, 69.9,
+                "Everyone eats", "Balance",
+                "Cobi Campbell, Jerell Bellamy", "0-4", "2-1"));
         
-        teams.add(new Team("Kennesaw State", 13, "SOUTH", "Afiee Bryant", 21, 13,
-                70.1, 76.1, 106.8, 110.1, -3.3, 46.2, 21.5, 41.8,
-                "Atlantic Sun challenger", "Upset potential",
-                "Jason Bostic, Javon Clark", "15-105", "N/A"));
+        teams.add(new Team("UPenn", 14, "SOUTH", "Fran McCaffery", 18, 12,
+                74.4, 74.5, 107.6, 106.6, 0.99, 50.4, 14.9, 70.4,
+                "Move and space", "Rebuilding",
+                "Tj Power, Aj Levine", "13-27", "6-13"));
         
-        teams.add(new Team("South Alabama", 14, "SOUTH", "Tony Delk", 20, 14,
-                69.2, 77.2, 105.9, 111.5, -5.6, 44.9, 22.1, 40.5,
-                "SunBelt fight", "Rebuilding",
-                "Jamal Sheppard, John Petty Jr.", "10-110", "N/A"));
+        teams.add(new Team("Idaho", 15, "SOUTH", "Alex Pribble", 18, 14,
+                75.8, 74.1, 108.4, 107.4, 1.0, 51.4, 13.4, 78.3,
+                "Crash the glass", "Make the most out of everything",
+                "Kolton Mitchell, Seth Joba", "1-5", "N/A"));
         
-        teams.add(new Team("Nicholls State", 15, "SOUTH", "Tom Burrell", 18, 16,
-                68.1, 78.5, 104.5, 112.8, -8.3, 43.2, 22.8, 39.1,
-                "Southland Conference", "Limited resources",
-                "Jaelyn Toles, David Camren Jackson", "5-115", "N/A"));
-        
-        teams.add(new Team("Omaha", 16, "SOUTH", "Ryan Jacobson", 16, 18,
-                66.8, 79.8, 102.8, 114.2, -11.4, 41.9, 23.5, 37.8,
-                "Summit League struggle", "Team building",
-                "Wes Washpun, Jay Situada", "0-120", "N/A"));
+        teams.add(new Team("Prairie View A&M", 16, "SOUTH", "Byron Smith", 15, 17,
+                74.8, 78.9, 101.2, 111.4, -10.15, 47.4, 16.2, 66.1,
+                "Get it out the mud", "Team building",
+                "Jordan Tillmon, Braelon Bush", "1-3", "1-2"));
  
         
         // MIDWEST REGION - SEEDS 1-16
         
         
-        teams.add(new Team("UConn", 1, "MIDWEST", "Dan Hurley", 32, 2,
-                82.9, 61.8, 121.5, 92.1, 29.4, 57.5, 10.2, 55.2,
-                "Back-to-back champs mentality", "Championship experience",
-                "Donovan Clingan, Tristen Newton", "150-30", "15-1"));
+        teams.add(new Team("Michigan", 1, "MIDWEST", "Dusty May", 30, 2,
+                87.3, 69.5, 128.2, 88.5, 39.70, 58.3, 13.1, 74.5,
+                "Attack the basket", "Out physical the other team",
+                "Yaxel Lendenborg, Elliot Cadeau", "74-31", "12-3"));
         
-        teams.add(new Team("Purdue", 2, "MIDWEST", "Matt Painter", 29, 5,
-                80.2, 64.5, 119.2, 97.8, 21.4, 56.1, 12.6, 52.8,
-                "Big Ten powerhouse", "Consistency and size",
-                "Zach Edey, Braden Smith", "110-55", "10-5"));
+        teams.add(new Team("Iowa State", 2, "MIDWEST", "Tj Otzelberger", 27, 5,
+                82.0, 65.6, 123.6, 91.6, 32.00, 56.1, 19.8, 72.9,
+                "3 and d", "Spread the floor and play defense",
+                "Joshua Jefferson, Milan Momcilovic", "24-24", "5-5"));
         
-        teams.add(new Team("Ohio State", 3, "MIDWEST", "Chris Holtmann", 28, 6,
-                79.5, 65.2, 118.1, 98.5, 19.6, 55.3, 13.1, 51.5,
-                "Fast-paced Big Ten", "Offensive weapons",
-                "Roddy Gayle Jr., Devin Royal", "95-65", "8-6"));
+        teams.add(new Team("Virginia", 3, "MIDWEST", "Ryan Odom", 27, 5,
+                80.4, 68.8, 122.8, 97.1, 25.71, 54.6, 13.3, 73.5,
+                "Spread the floor and suffocate on defense", "Slow and steady",
+                "Chance Mallory, Thijs De Ridder", "35-25", "2-4"));
         
-        teams.add(new Team("Wisconsin", 4, "MIDWEST", "Greg Gard", 26, 8,
-                76.8, 67.1, 115.2, 100.2, 15.0, 53.2, 14.5, 50.1,
-                "Big Ten staple", "Coach stability",
-                "Max Klesmit, Nate Reuvers", "100-70", "13-7"));
+        teams.add(new Team("Alabama", 4, "MIDWEST", "Nate Oats", 24, 8,
+                91.2, 82.7, 129.7, 102.5, 27.22, 55.2, 10.8, 69.7,
+                "Score and score", "Maximize offense",
+                "Labaron Philon, Aden Halloway", "33-26", "15-9"));
         
-        teams.add(new Team("Oklahoma", 5, "MIDWEST", "Porter Moser", 24, 10,
-                75.2, 69.5, 113.8, 102.8, 11.0, 51.8, 15.2, 48.9,
-                "SEC transition", "Development mode",
-                "Jalon Moore, Jaylen Hill", "60-80", "3-9"));
+        teams.add(new Team("Texas Tech", 5, "MIDWEST", "Grant MsCasland", 23, 9,
+                80.2, 73.1, 124.8, 100.4, 24.46, 56.1, 12.7, 71.1,
+                "3 ball ", "Bend dont break",
+                "Christian Anderson jr. , LeJuan Watts", "22-22", "5-4"));
         
-        teams.add(new Team("Nebraska", 6, "MIDWEST", "Fred Hoiberg", 26, 8,
-                77.1, 66.8, 115.8, 99.5, 16.3, 54.1, 13.8, 51.2,
-                "Big Ten emerging", "Recruiting momentum",
-                "Kaleb Joseph, Javon Pickett", "70-90", "2-8"));
+        teams.add(new Team("Tennessee", 6, "MIDWEST", "Rick Barnes", 22, 10,
+                78.8, 69.6, 121.4, 94.4, 27.0, 51.4, 14.1, 75.5,
+                "Physical", "Defense",
+                "Nate Ament, Ja'kobi Gillespie", "70-90", "36-20"));
         
-        teams.add(new Team("Vanderbilt", 7, "MIDWEST", "Jerry Stackhouse", 25, 9,
-                74.5, 68.2, 112.5, 101.1, 11.4, 50.9, 15.9, 49.5,
-                "SEC competitive", "Coaching energy",
-                "Myles Stute, Jason Rivera", "50-100", "1-7"));
+        teams.add(new Team("Kentucky", 7, "MIDWEST", "Mark Pope", 20, 12,
+                80.5, 74.3, 120.4, 99.3, 21.09, 53.3, 13.4, 71.8,
+                "Keep shooting", "SEC competitive",
+                "Otega Oweh, Collin Chandler", "134-57", "3-4"));
         
-        teams.add(new Team("LSU", 8, "MIDWEST", "Matt McMahon", 23, 11,
-                72.8, 70.1, 110.8, 103.5, 7.3, 49.5, 16.8, 47.2,
-                "SEC scrappy", "Tournament experience",
-                "Trae Hannibal, KJ Williams", "40-110", "4-8"));
+        teams.add(new Team("Georgia", 8, "MIDWEST", "Mike White", 23, 9,
+                89.4, 79.8, 124.1, 104.8, 19.36, 54.2, 15.6, 67.7,
+                "3 level scoring ", "Score by any means necessary",
+                "kanon Catchings, Blue Cain", "7-14", "6-7"));
         
-        teams.add(new Team("Missouri", 9, "MIDWEST", "Dennis Gates", 22, 12,
-                71.5, 71.5, 109.5, 104.8, 4.7, 48.2, 17.5, 46.1,
-                "Big 12/SEC balanced", "Coaching young",
-                "Caleb Lohner, Tai Jones", "35-115", "N/A"));
+        teams.add(new Team("Saint Louis", 9, "MIDWEST", "Josh Schertz", 28, 4,
+                86.4, 71.6, 120.3, 100.8, 19.51, 59.7, 13.9, 74.6,
+                "Heliocentric offense", "Keep the engine going",
+                "Robbie Avila, Trey Green", "7-12", "N/A"));
         
-        teams.add(new Team("Drexel", 10, "MIDWEST", "Zack Spiker", 21, 13,
-                70.2, 72.8, 108.1, 105.9, 2.2, 47.1, 18.9, 44.8,
-                "Colonial solid", "Defensive pressure",
-                "Amari Williams, Jaylen Gadsden", "30-120", "N/A"));
+        teams.add(new Team("Santa Clara", 10, "MIDWEST", "Herb Sendek", 25, 7,
+                82.9, 73.5, 123.7, 104.7, 19.02, 54.4, 17.2, 69.5,
+                "High shots", "Score as much as possible",
+                "Allen Graves, Brenton knapper", "11-14", "7-9"));
         
-        teams.add(new Team("UNC Wilmington", 11, "MIDWEST", "Lorn Brown", 20, 14,
-                69.8, 73.5, 107.5, 106.8, 0.7, 46.5, 19.2, 43.9,
-                "CAA strong", "Mid-major potential",
-                "Jaylen Fornes, Jansen Lautz", "25-125", "N/A"));
+        teams.add(new Team("Miami (OH)", 11, "MIDWEST", "Travis Steele", 32, 0,
+                86.3, 76.5, 117.1, 108.5, 8.64, 58.6, 15.2, 73.2,
+                "3 ball efficiency", "Mid-major potential and unpredictability",
+                "Eian Elmer, Brant Byers", "7-20", "0-0"));
         
-        teams.add(new Team("Penn", 12, "MIDWEST", "Steve Donahue", 19, 15,
-                68.5, 74.2, 106.2, 107.9, -1.7, 45.2, 20.1, 42.5,
-                "Ivy League champion", "Academic excellence",
-                "Ryan Betley, Lewis Djonkeng", "20-130", "N/A"));
+        teams.add(new Team("Akron", 12, "MIDWEST", "Dustin Ford", 27, 5,
+                86.4, 75.0, 118.9, 106.9, 11.94, 58.2, 15.9, 72.5,
+                "Drive and kick", "Give space to each other",
+                "Tavari Johnson, Amani Lyles", "0-7", "4-7"));
         
-        teams.add(new Team("UT Arlington", 13, "MIDWEST", "Corey Barr", 21, 13,
-                69.5, 75.1, 106.8, 108.9, -2.1, 45.8, 20.8, 41.2,
-                "Sun Belt challenger", "Scrappy play",
-                "David Azore, Javon Chad", "15-135", "N/A"));
+        teams.add(new Team("Hofstra", 13, "MIDWEST", "Speedy Claxton", 22, 10,
+                79.8, 75.6, 112.6, 110.2, 9.06, 51.4, 12.8, 71.5,
+                "dont get down ", "Scrappy play",
+                "Cruz Davis, Prestib Edmead", "0-10", "N/A"));
         
-        teams.add(new Team("Southern Illinois", 14, "MIDWEST", "Bryan Mullins", 19, 15,
-                68.2, 76.2, 105.5, 110.2, -4.7, 44.1, 21.5, 40.1,
-                "MVC competitve", "Mid-major grind",
-                "Marcus Domask, TJ Strickland", "10-140", "N/A"));
+        teams.add(new Team("Wright State", 14, "MIDWEST", "Clin Sargent", 21, 11,
+                68.2, 76.2, 105.5, 110.2, 2.36, 44.1, 14.6, 72.6,
+                "competitive", "Mid-major grind",
+                "Micheal Cooper, TJ Burch", "1-5", "0-2"));
         
-        teams.add(new Team("Winthrop", 15, "MIDWEST", "Jack Katz", 18, 16,
-                67.1, 77.5, 104.2, 111.8, -7.6, 42.9, 22.3, 38.9,
-                "Big South player", "Tournament spirit",
-                "Micheal Anane, Hunter Tyson", "5-145", "N/A"));
+        teams.add(new Team("Tennessee State", 15, "MIDWEST", "Nolan Smith", 23, 9,
+                77.9, 75.1, 109.2, 111.3, -2.05, 50.0, 17.3, 72.1,
+                "physical", "Tournament spirit",
+                "Travis harper II, Alex Garcia", "0-3", "0-0"));
         
-        teams.add(new Team("San Jose State", 16, "MIDWEST", "Steve Tovor", 15, 19,
-                65.9, 78.9, 102.1, 113.5, -11.4, 40.8, 23.8, 37.2,
-                "Mountain West bottom", "Building block",
-                "Braxton Bayless, Javon Clark", "0-150", "N/A"));
+        teams.add(new Team("Howard", 16, "MIDWEST", "Kenny Blakeney", 22, 10,
+                75.5, 69.4, 104.9, 107.5, -2.64, 50.9, 17.9, 71.6,
+                "Shoot when open", "Building block",
+                "Bryce Harris, Cam Gillus", "1-5", "1-3"));
  
         return teams;
     }

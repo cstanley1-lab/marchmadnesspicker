@@ -12,10 +12,10 @@ import javax.swing.border.EmptyBorder;
 
 public class MatchupPanel extends JPanel {
 
-    // this class will display our head to head comparison of two teams in a single amtchup
-    // will show statistics with color coding to indicate which team is better in each category
-    // allows the user to pick a winner and possible ask for a suggestion
-
+    // This class will display our head to head matchups between two temas 
+    // it will show our stats, highlight statistical advantages, and allow the user to pick a winner to advance in the bracket
+    // will also show a suggested pick based on direct statistical comparison of the two teams and our prediction model
+    
     private Game game;
 
     private RegionalTournamentPanel regionPanel;
@@ -62,6 +62,7 @@ public class MatchupPanel extends JPanel {
         predictionLabel.setForeground(Color.CYAN);
         panel.add(predictionLabel, BorderLayout.NORTH);
 
+        // declaring and instanting a JButton for the suggested pick that will automatically select that team as the winner and advance them in the bracket when clicked
         JButton suggestedPickButton = new JButton();
         suggestedPickButton.setFont(new Font("Arial", Font.BOLD, 16));
         suggestedPickButton.setFocusPainted(false);
@@ -71,6 +72,7 @@ public class MatchupPanel extends JPanel {
             suggestedPickButton.setBackground(new Color(100, 150, 100));
             suggestedPickButton.setForeground(Color.WHITE);
             // when the suggested pick button is clicked, we will automatically select that team as the winner and advance them in the bracket
+            // action listener to handle the suggested pick button click | step 4
             suggestedPickButton.addActionListener(e -> {
                 game.setWinner(suggestedWinner);
                 regionPanel.onMatchupComplete(suggestedWinner);
@@ -81,9 +83,9 @@ public class MatchupPanel extends JPanel {
             suggestedPickButton.setForeground(Color.WHITE);
             suggestedPickButton.setEnabled(false);
         }
-
+        // step 3 adding the suggested pick button to the panel
         panel.add(suggestedPickButton, BorderLayout.CENTER);
-
+// step 5 return the completed suggested pick panel to be added to the matchup panel
         return panel;
     }
 
@@ -152,7 +154,9 @@ public class MatchupPanel extends JPanel {
         pickButton.setForeground(Color.WHITE);
         pickButton.setFocusPainted(false);
         
-        // CHANGED: When pick button is clicked, notify parent tournament panel
+        // adding our actionlistener to handle when the pick button is clicked, 
+        // setting the winner of the matchup in the game and advancing them in the bracket by calling the
+        //  onMatchupComplete method in the regional tournament panel
         pickButton.addActionListener(e -> {
             game.setWinner(team);
             regionPanel.onMatchupComplete(team);

@@ -89,6 +89,8 @@ class RegionalTournamentPanel extends JPanel {
         sorted.addAll(teams);
         sorted.sort((t1, t2) -> Integer.compare(t1.getSeed(), t2.getSeed()));
 
+        // Copilot suggested this approach in order to help with the seeding order
+        // helper function to find a team by seed in the sorted list
         java.util.function.IntFunction<Team> findBySeed = (seed) -> {
             for (Team t : sorted) {
                 if (t.getSeed() == seed)

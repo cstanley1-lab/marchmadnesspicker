@@ -44,7 +44,7 @@ public class BracketPanel extends JPanel {
         title.setForeground(Color.WHITE);
         add(title, BorderLayout.NORTH);
 
-        // Create content panel that will switch between views
+        // Create content panel that will switch between region selection , tournament display, and champion display
         contentPanel = new JPanel();
         contentPanel.setLayout(new BorderLayout());
         add(contentPanel, BorderLayout.CENTER);
@@ -86,6 +86,7 @@ public class BracketPanel extends JPanel {
             Color regionColor = regionColors[i];
 
             // holding our button and status label for each region in a sub-panel for better layout control
+            // declaring and isntantiating our JButton for the region and styling it with the region color and some basic formatting
             JPanel regionRowPanel = new JPanel(new BorderLayout(10,5));
             regionRowPanel.setBackground(new Color(40, 40, 40));
 
@@ -95,7 +96,7 @@ public class BracketPanel extends JPanel {
             regionButton.setForeground(Color.WHITE);
             regionButton.setFocusPainted(false);
 
-            // CHANGED: Add action listener to launch tournament for this region
+            // our action listener to handle when a region button is clicked, launching the regional tournament for that region (4)
             regionButton.addActionListener(e -> {
                 startRegionalTournament(region);
             });
@@ -103,6 +104,7 @@ public class BracketPanel extends JPanel {
             // create status label showing regional champion if selected, or "no champion selected" if not
             // appearing below each region button for easy reference on the main screen
             // starts of gray and italic and turns green and bold when a champion is selected for that region
+            // connecting the lisener from above to update the status label when a champion is selected in the regional tournament panel
             JLabel statusLabel = new JLabel("No champion selected", JLabel.CENTER);
             statusLabel.setFont(new Font("Arial", Font.ITALIC, 14));
             statusLabel.setForeground(Color.LIGHT_GRAY);
@@ -115,7 +117,7 @@ public class BracketPanel extends JPanel {
             regionRowPanel.add(statusLabel, BorderLayout.SOUTH);
 
             updateRegionStatus(i); // initialize status label
-
+            // adding the button and status label for this region to the main region button panel
             regionButtonPanel.add(regionRowPanel);
         }
         contentPanel.add(regionButtonPanel, BorderLayout.CENTER);

@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
  class FinalMatchupPanel extends JPanel{
-    // tjos class will display the winners of the regions and turn it into the final four matchups and championship
+    // this class will display the winners of the regions and turn it into the final four matchups and championship
 
     private Game game;
 
@@ -135,7 +135,7 @@ import javax.swing.border.EmptyBorder;
         panel.add(createStatLabel("Reb%: " + String.format("%.1f", team.getReboundPct()), 
                                   isTeam1, "ReboundPct"));
         
-
+        // Copilot suggested using the HTML formatting in JLabels
         // html and /b and <br> are used because they allow for multiline text and basic formatting, 
         // which is useful for displaying key players and playstyle information in a readable way
         // Key players
